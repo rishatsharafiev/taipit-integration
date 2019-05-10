@@ -13,3 +13,5 @@ DATABASE_MIGRATE_PATH = BASE_PATH / DATABASE_MIGRATE_NAME
 SOAP_WSDL = env('SOAP_WSDL', cast=str, default='https://nst-262.taipit.ru/API/ws/UploadData.1cws?wsdl') 
 SOAP_LOGIN = env('SOAP_LOGIN', cast=str) 
 SOAP_PASSWORD = env('SOAP_PASSWORD', cast=str) 
+
+DEBUG_LEVEL = env('DEBUG_LEVEL', cast=str, default='DEBUG')

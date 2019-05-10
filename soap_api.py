@@ -22,14 +22,14 @@ logging.config.dictConfig({
     },
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': settings.DEBUG_LEVEL,
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
     },
     'loggers': {
         'zeep.transports': {
-            'level': 'DEBUG',
+            'level': settings.DEBUG_LEVEL,
             'propagate': True,
             'handlers': ['console'],
         },
