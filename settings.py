@@ -1,7 +1,15 @@
-import os
+import pathlib  
+from envparse import env
 
-BASE_DIR = os.path.dirname(__file__)
-DATABASE_NAME = 'database.sqlite3'
-DATABASE_PATH = os.path.join(BASE_DIR, DATABASE_NAME)
-DATABASE_MIGRATE_NAME = 'database.sql'
-DATABASE_MIGRATE_PATH = os.path.join(BASE_DIR, DATABASE_MIGRATE_NAME)
+env.read_envfile()
+
+BASE_PATH = pathlib.Path(__file__).parent
+
+DATABASE_NAME = env('DATABASE_NAME', cast=str, default='database.sqlite3') 
+DATABASE_PATH = BASE_PATH / DATABASE_NAME
+DATABASE_MIGRATE_NAME = env('DATABASE_MIGRATE_NAME', cast=str, default='database.sql') 
+DATABASE_MIGRATE_PATH = BASE_PATH / DATABASE_MIGRATE_NAME
+
+SOAP_WSDL = env('SOAP_WSDL', cast=str, default='https://nst-262.taipit.ru/API/ws/UploadData.1cws?wsdl') 
+SOAP_LOGIN = env('SOAP_LOGIN', cast=str) 
+SOAP_PASSWORD = env('SOAP_PASSWORD', cast=str) 
