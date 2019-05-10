@@ -5,11 +5,13 @@ from requests.auth import HTTPBasicAuth
 from zeep import Client
 from zeep.transports import Transport
 
-import settings
-
 # initialize db
 from utils.db import migrate
 migrate()
+
+# imports
+import settings
+from utils.db import get_connection
 
 # logging
 import logging.config
@@ -81,16 +83,40 @@ class SoapApi:
         
         return result
 
+    # def get_result_queue():
+    #     sql_string = """SELECT comment.id, comment.first_name, comment.second_name, comment.last_name, 
+    #                     comment.phone, comment.email, comment.text AS region_name FROM comment
+    #                     ORDER BY id DESC;
+    #                 """
 
-soap_api = SoapApi()
-client = soap_api.get_client()
+    #     with get_connection() as connection:
+    #         cursor = connection.cursor()
+    #         cursor.execute(sql_string)
+    #         return [
+    #             CommentEntity(
+    #                 _first_name=get_item(row, index=1),
+    #                 _last_name=get_item(row, index=3),
+    #                 _text=get_item(row, index=6),
+    #                 _id=get_item(row, index=0), 
+    #                 _second_name=get_item(row, index=2),
+    #                 _phone=get_item(row, index=4),
+    #                 _email=get_item(row, index=5),
+    #             ) for row in cursor.fetchall()
+    #         ]
 
-item = {
-    'MaterialID': '00-06108034',
-    'MaterialID': '00-06108035',
-}
-result_id = soap_api.get_available_goods_async(item)
-print(result_id)
+    # def create():
+    #     sql_string = "INSERT INTO comment(first_name, second_name, last_name, phone, email, text, city_id) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    #     prepared_statements = (
+    #         comment_entity.first_name,
+    #     )
+
+    #     with get_connection() as connection:
+    #         cursor = connection.cursor()
+    #         cursor.execute(sql_string, prepared_statements)
+    #         connection.commit()
+    #         return cursor.lastrowid
+
+
 
 import time
 time.sleep(5)

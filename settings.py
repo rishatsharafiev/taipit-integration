@@ -6,9 +6,9 @@ env.read_envfile()
 BASE_PATH = pathlib.Path(__file__).parent
 
 DATABASE_NAME = env('DATABASE_NAME', cast=str, default='database.sqlite3') 
-DATABASE_PATH = BASE_PATH / DATABASE_NAME
+DATABASE_PATH = str(BASE_PATH / DATABASE_NAME)
 DATABASE_MIGRATE_NAME = env('DATABASE_MIGRATE_NAME', cast=str, default='database.sql') 
-DATABASE_MIGRATE_PATH = BASE_PATH / DATABASE_MIGRATE_NAME
+DATABASE_MIGRATE_PATH = str(BASE_PATH / DATABASE_MIGRATE_NAME)
 
 SOAP_WSDL = env('SOAP_WSDL', cast=str, default='https://nst-262.taipit.ru/API/ws/UploadData.1cws?wsdl') 
 SOAP_LOGIN = env('SOAP_LOGIN', cast=str) 
