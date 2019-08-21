@@ -1,5 +1,6 @@
 # taipit
 
 ### Установка зависимостей
-
-### Настройка crontab
+```
+pip install -r requirements.txt
+```
